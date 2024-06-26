@@ -3,6 +3,7 @@ const sqlite3 = require('sqlite3').verbose();
 const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
+const cors = require('cors');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('../swagger.json');
 
@@ -10,6 +11,7 @@ const app = express();
 const port = 3000;
 const secretKey = 'your_secret_key';
 
+app.use(cors());
 app.use(bodyParser.json({ limit: '10mb' })); // Erhöhen Sie die Größenbeschränkung für das Hochladen von Bildern
 
 let db = new sqlite3.Database('./database.sqlite', (err) => {

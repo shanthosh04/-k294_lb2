@@ -9,7 +9,11 @@
    ```
    npm install
    ```
-2. Den Server starten:
+2. Den Server eingeben:
+   ```
+   cd server
+   ```
+3. Den Server starten:
    ```
    node app.js
    ```
