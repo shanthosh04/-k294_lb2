@@ -10,7 +10,7 @@ loginForm.addEventListener('submit', async event => {
     if (!username || !password) alert("Please enter username or password!")
     await login(username, password)
 
-    
+
 })
 
 async function login(username, password) {
@@ -28,6 +28,13 @@ async function login(username, password) {
 
     const data = await res.json()
     localStorage.setItem('jwt', data.token)
+
+    if (data.token) {
+        window.location.href = './index.html'
+        return
+    }
+
+    alert("Login failed")
 }
 
 
