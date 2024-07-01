@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="../scripts/helpers.js"></script>
+  <script src="../scripts/manage-product.js"></script>
 </head>
 <body class="bg-gray-50">
     <section class="min-h-screen flex flex-col justify-between">
@@ -16,9 +18,6 @@
                 <div class="hidden w-full md:block md:w-auto" id="navbar-default">
                     <ul class="flex flex-col md:flex-row md:space-x-8 text-white">
                         <li><a href="./index.html" class="block py-2 px-3 hover:bg-blue-800 rounded md:hover:bg-transparent">Produkte</a></li>
-                        <li><a href="./login.html" class="block py-2 px-3 hover:bg-blue-800 rounded md:hover:bg-transparent">Login</a></li>
-                        <li><a href="./register.html" class="block py-2 px-3 hover:bg-blue-800 rounded md:hover:bg-transparent">Registrieren</a></li>
-                    </ul>
                 </div>
             </div>
         </nav>
@@ -31,22 +30,11 @@
                     <table class="min-w-full bg-white border">
                         <thead class="bg-gray-100">
                             <tr>
-                                <th class="py-2 px-4 border">ID</th>
                                 <th class="py-2 px-4 border">Titel</th>
-                                <th class="py-2 px-4 border">Beschreibung</th>
                                 <th class="py-2 px-4 border">Aktionen</th>
                             </tr>
                         </thead>
-                        <tbody id="product-list">
-                            <tr>
-                                <td class="py-2 px-4 border">1</td>
-                                <td class="py-2 px-4 border">Produkt 1</td>
-                                <td class="py-2 px-4 border">Beschreibung von Produkt 1</td>
-                                <td class="py-2 px-4 border">
-                                    <button class="bg-yellow-500 text-white font-medium rounded-lg text-sm px-2 py-1 hover:bg-yellow-600 focus:outline-none focus:ring-4 focus:ring-yellow-300">Bearbeiten</button>
-                                    <button class="bg-red-600 text-white font-medium rounded-lg text-sm px-2 py-1 hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-red-300">Löschen</button>
-                                </td>
-                            </tr>
+                        <tbody id="product-list" >
                         </tbody>
                     </table>
                 </div>
@@ -57,22 +45,14 @@
                     <table class="min-w-full bg-white border">
                         <thead class="bg-gray-100">
                             <tr>
-                                <th class="py-2 px-4 border">ID</th>
                                 <th class="py-2 px-4 border">Kategorie</th>
                                 <th class="py-2 px-4 border">Aktionen</th>
                             </tr>
                         </thead>
                         <tbody id="category-list">
-                            <tr>
-                                <td class="py-2 px-4 border">1</td>
-                                <td class="py-2 px-4 border">Alle</td>
-                                <td class="py-2 px-4 border">
-                                    <button class="bg-yellow-500 text-white font-medium rounded-lg text-sm px-2 py-1 hover:bg-yellow-600 focus:outline-none focus:ring-4 focus:ring-yellow-300">Bearbeiten</button>
-                                    <button class="bg-red-600 text-white font-medium rounded-lg text-sm px-2 py-1 hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-red-300">Löschen</button>
-                                </td>
-                            </tr>
+
                         </tbody>
-                    </table>
+                    </table>                    
                 </div>
             </div>
         </div>
