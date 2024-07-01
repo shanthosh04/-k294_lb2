@@ -5,10 +5,16 @@ registerForm.addEventListener('submit', async event => {
 
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
+    const confirmPassword= document.getElementById('confirm-password').value;
 
     if (!username || !password) {
         alert("Please enter username or password!");
         return;
+    }
+
+    if (password !== confirmPassword) {
+        alert("Password doesn't match!")
+        return
     }
 
     await register(username, password);
@@ -41,3 +47,11 @@ async function register(username, password) {
         alert("An error occurred during registration");
     }
 }
+
+function redirectHome() {
+    const token = localStorage.getItem('jwt')
+    if (token) window.location.href = "./index.html"
+    return
+}
+
+redirectHome()

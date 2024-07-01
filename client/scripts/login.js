@@ -37,4 +37,10 @@ async function login(username, password) {
     alert("Login failed")
 }
 
+function redirectHome() {
+    const token = localStorage.getItem('jwt')
+    if (token) window.location.href = "./index.html"
+    return
+}
 
+redirectHome()
