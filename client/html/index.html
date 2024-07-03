@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="../scripts/index.js"></script>
+  <script src="../scripts/helpers.js"></script>
 </head>
 <body class="bg-gray-50">
     <section class="min-h-screen flex flex-col justify-between">
@@ -16,8 +18,8 @@
                 <div class="hidden w-full md:flex md:items-center md:w-auto" id="navbar-default">
                     <ul class="flex flex-col md:flex-row md:space-x-8 text-white">
                         <li><a href="./index.html" class="block py-2 px-3 hover:bg-blue-800 rounded md:hover:bg-transparent">Produkte</a></li>
-                        <li><a href="./login.html" class="block py-2 px-3 hover:bg-blue-800 rounded md:hover:bg-transparent">Login</a></li>
-                        <li><a href="./register.html" class="block py-2 px-3 hover:bg-blue-800 rounded md:hover:bg-transparent">Registrieren</a></li>
+                        <li><a href="./manage-product.html" class="block py-2 px-3 hover:bg-blue-800 rounded md:hover:bg-transparent">Produkte / Kategorie verwalten</a></li>
+                        <li><a href="./login.html" class="block py-2 px-3 hover:bg-blue-800 rounded md:hover:bg-transparent">Ausloggen</a></li>
                     </ul>
                 </div>
                 <button class="md:hidden text-white focus:outline-none" onclick="document.getElementById('navbar-default').classList.toggle('hidden')">
@@ -28,47 +30,23 @@
             </div>
         </nav>
 
-        <div class="flex gap-2 justify-end mr-2 mt-2">
-            <a href="./manage-product.html" class="bg-blue-500 text-white px-3 py-2 rounded hover:bg-blue-700 focus:outline-none">Produkte/Kategorien verwalten</a>
-        </div>
+            <div class="flex flex-row ">
+                <aside class="bg-white shadow-lg w-1/4 p-4">
+                    <h2 class="text-xl font-semibold mb-4">Kategorien</h2>
+                    <ul id="category-list" class="space-y-2">
+                    </ul>
+                </aside>
 
-        <div class="flex flex-row ">
-            <aside class="bg-white shadow-lg w-1/4 p-4">
-                <h2 class="text-xl font-semibold mb-4">Kategorien</h2>
-                <ul class="space-y-2">
-                    <li><a href="#all" class="block py-2 px-4 bg-gray-100 rounded hover:bg-gray-200">Alles</a></li>
-                    <li><a href="#categorie2" class="block py-2 px-4 bg-gray-100 rounded hover:bg-gray-200">Kategorie 2</a></li>
-                    <li><a href="#categorie3" class="block py-2 px-4 bg-gray-100 rounded hover:bg-gray-200">Kategorie 3</a></li>
-                    <li><a href="#categorie4" class="block py-2 px-4 bg-gray-100 rounded hover:bg-gray-200">Kategorie 4</a></li>
-                    <li><a href="#categorie5" class="block py-2 px-4 bg-gray-100 rounded hover:bg-gray-200">Kategorie 5</a></li>
-                </ul>
-            </aside>
-
-            <main class="flex-1">
-                <div class="max-w-screen-xl mx-auto px-4 py-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                    <div class="bg-white rounded-lg overflow-hidden shadow-lg ring-4 ring-stone-500 ring-opacity-40">
-                        <div class="relative">
-                            <img class="w-full" src="https://images.unsplash.com/photo-1523275335684-37898b6baf30" alt="Product Image">
-                        </div>
-                        <div class="p-4">
-                            <h3 class="text-lg font-medium mb-2">Produkt Title</h3>
-                            <p class="text-gray-600 text-sm mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vitae ante vel eros fermentum faucibus sit amet euismod lorem.</p>
-                            <div class="flex items-center justify-between">
-                                <span class="font-bold text-lg text-blue-700">19.90 CHF</span>
-                                <div class="flex space-x-2">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="flex gap-2 ml-2" id="product-list">
                 </div>
-            </main>
+            </div>
         </div>
 
         <footer class="bg-stone-500 text-white py-4">
             <div class="max-w-screen-xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
                 <span class="text-sm">Copyright &copy; 2024 | Shanthosh Sivasentinathan</span>
                 <ul class="flex space-x-4 mt-3 md:mt-0">
-                    <li><a href="#" class="hover:underline">Impressum</a></li>
+                    <li><a href="./impressum.html" class="hover:underline">Impressum</a></li>
                 </ul>
             </div>
         </footer>

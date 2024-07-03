@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="../scripts/create-product.js" defer></script>
+  <script src="../scripts/helpers.js"></script>
 </head>
 <body class="bg-gray-50">
     <section class="min-h-screen flex flex-col justify-between">
@@ -17,8 +18,7 @@
                 <div class="hidden w-full md:block md:w-auto" id="navbar-default">
                     <ul class="flex flex-col md:flex-row md:space-x-8 text-white">
                         <li><a href="./index.html" class="block py-2 px-3 hover:bg-blue-800 rounded md:hover:bg-transparent">Produkte</a></li>
-                        <li><a href="./login.html" class="block py-2 px-3 hover:bg-blue-800 rounded md:hover:bg-transparent">Login</a></li>
-                        <li><a href="./register.html" class="block py-2 px-3 hover:bg-blue-800 rounded md:hover:bg-transparent">Registrieren</a></li>
+                        <li><a href="./manage-product.html" class="block py-2 px-3 hover:bg-blue-800 rounded md:hover:bg-transparent">Produkte / Kategorie verwalten</a></li>
                     </ul>
                 </div>
             </div>
@@ -27,19 +27,29 @@
         <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto w-full flex-grow">
             <div class="w-full max-w-md bg-white rounded-lg shadow-lg p-6">
                 <h1 class="text-2xl font-bold text-gray-900 mb-6">Produkt Hinzufügen</h1>
-                <form class="space-y-6" id="create-product" enctype="multipart/form-data">
+                <form class="space-y-6" id="product-form" enctype="multipart/form-data">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Produkt Titel</label>
+                        <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg w-full p-2.5 focus:ring-stone-500 focus:border-stone-500" placeholder="Produkt Titel" required>
+                    </div>
+
+                    <div>
+                        <label for="price" class="block text-sm font-medium text-gray-700 mb-1">Preis</label>
+                        <input type="number" name="price" id="price" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg w-full p-2.5 focus:ring-stone-500 focus:border-stone-500" placeholder="Preis" required>
+                    </div>
+
+                    <div>
+                        <label for="categoryId" class="block mb-2 text-sm font-medium text-gray-900">Kategorie Auswahl</label>
+                        <select id="categoryId" name="categoryId" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
+                            <option selected disabled>Wähle eine Kategorie</option>
+                        </select>
+                    </div>
+
                     <div>
                         <label for="image" class="block text-sm font-medium text-gray-700 mb-1">Produkt Bild</label>
-                        <input type="file" name="image" id="image" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg w-full p-2.5 focus:ring-stone-500 focus:border-stone-500" accept="image/*" required>
+                        <input type="url" name="image" id="image" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg w-full p-2.5 focus:ring-stone-500 focus:border-stone-500" accept="image/*" required>
                     </div>
-                    <div>
-                        <label for="product-title" class="block text-sm font-medium text-gray-700 mb-1">Produkt Titel</label>
-                        <input type="text" name="product-title" id="product-title" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg w-full p-2.5 focus:ring-stone-500 focus:border-stone-500" placeholder="Produkt Titel" required>
-                    </div>
-                    <div>
-                        <label for="categorie-add" class="block text-sm font-medium text-gray-700 mb-1">Kategorie Zuteilung</label>
-                        <input type="text" name="categorie-add" id="product-title" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg w-full p-2.5 focus:ring-stone-500 focus:border-stone-500" placeholder="Kategorie Zuteilung" required>
-                    </div>
+                    
                     <button type="submit" class="w-full bg-blue-600 text-white font-medium rounded-lg text-sm px-5 py-2.5 hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300">Senden</button>
                 </form>
             </div>

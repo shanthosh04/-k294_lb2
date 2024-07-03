@@ -66,8 +66,8 @@ async function displayProducts() {
           <tr>
               <td class="py-2 px-4 border">${pro.name}</td>
               <td class="py-2 px-4 border">
-                  <button class="bg-yellow-500 text-white font-medium rounded-lg text-sm px-2 py-1 hover:bg-yellow-600 focus:outline-none focus:ring-4 focus:ring-yellow-300">Bearbeiten</button>
-                  <button class="bg-red-600 text-white font-medium rounded-lg text-sm px-2 py-1 hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-red-300">Löschen</button>
+                  <a href="./create-product.html?id=${pro.id}" class="bg-yellow-500 text-white font-medium rounded-lg text-sm px-2 py-1 hover:bg-yellow-600 focus:outline-none focus:ring-4 focus:ring-yellow-300">Bearbeiten</a>
+                  <button onclick="deleteProduct(${pro.id})" class="bg-red-600 text-white font-medium rounded-lg text-sm px-2 py-1 hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-red-300">Löschen</button>
               </td>
           </tr>
       `
@@ -77,7 +77,7 @@ async function displayProducts() {
 
 displayProducts()
 
-async function deleteProducts(id) {
+async function deleteProduct(id) {
     const isConfirmed = confirm("Are you sure you want to delete?")
     if (!isConfirmed) return
 
