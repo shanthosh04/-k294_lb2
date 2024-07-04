@@ -19,7 +19,7 @@
                     <ul class="flex flex-col md:flex-row md:space-x-8 text-white">
                         <li><a href="./index.html" class="block py-2 px-3 hover:bg-blue-800 rounded md:hover:bg-transparent">Produkte</a></li>
                         <li><a href="./manage-product.html" class="block py-2 px-3 hover:bg-blue-800 rounded md:hover:bg-transparent">Produkte / Kategorie verwalten</a></li>
-                        <li><a href="./login.html" class="block py-2 px-3 hover:bg-blue-800 rounded md:hover:bg-transparent">Ausloggen</a></li>
+                        <li><button onclick="logout()" class="block py-2 px-3 hover:bg-blue-800 rounded md:hover:bg-transparent">Ausloggen</button></li>
                     </ul>
                 </div>
                 <button class="md:hidden text-white focus:outline-none" onclick="document.getElementById('navbar-default').classList.toggle('hidden')">
@@ -33,6 +33,7 @@
             <div class="flex flex-row ">
                 <aside class="bg-white shadow-lg w-1/4 p-4">
                     <h2 class="text-xl font-semibold mb-4">Kategorien</h2>
+                    <a href="?filter=all" class="block py-2 px-4 bg-gray-100 rounded hover:bg-gray-200 mb-1">Alles</a>
                     <ul id="category-list" class="space-y-2">
                     </ul>
                 </aside>
@@ -45,9 +46,6 @@
         <footer class="bg-stone-500 text-white py-4">
             <div class="max-w-screen-xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
                 <span class="text-sm">Copyright &copy; 2024 | Shanthosh Sivasentinathan</span>
-                <ul class="flex space-x-4 mt-3 md:mt-0">
-                    <li><a href="./impressum.html" class="hover:underline">Impressum</a></li>
-                </ul>
             </div>
         </footer>
     </section>
