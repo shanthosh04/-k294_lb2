@@ -1,94 +1,100 @@
-const token = localStorage.getItem('jwt')
+const token = localStorage.getItem('jwt');
 
+// Asynchrone Funktion zum Abrufen aller Kategorien von der API
 async function getCategories() {
-    const res = await fetch('http://localhost:3000/categories')
-    const data = await res.json()
-
-    return data
+    const response = await fetch('http://localhost:3000/categories', {
+        headers: { Authorization: `Bearer ${token}` }
+    });
+    const data = await response.json();
+    return data;
 }
 
-
+// Funktion zum Anzeigen aller Kategorien in der HTML-Tabelle
 async function displayCategories() {
-    const catergories = await getCategories()
-    const tbody = document.getElementById('category-list')
-
+    const categories = await getCategories();
+    const tbody = document.getElementById('category-list');
     
-    catergories.forEach(cat => {
+    categories.forEach(category => {
         const tr = `
             <tr>
-                <td class="py-2 px-4 border">${cat.name}</td>
+                <td class="py-2 px-4 border">${category.name}</td>
                 <td class="py-2 px-4 border">
-                    <a href="./create-categorie.html?id=${cat.id}" class="bg-yellow-500 text-white font-medium rounded-lg text-sm px-2 py-1 hover:bg-yellow-600 focus:outline-none focus:ring-4 focus:ring-yellow-300">Bearbeiten</a>
-                    <button onclick="deleteCategory(${cat.id})" class="bg-red-600 text-white font-medium rounded-lg text-sm px-2 py-1 hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-red-300">Löschen</button>
+                    <a href="./create-categorie.html?id=${category.id}" class="bg-yellow-500 text-white font-medium rounded-lg text-sm px-2 py-1 hover:bg-yellow-600 focus:outline-none focus:ring-4 focus:ring-yellow-300">Bearbeiten</a>
+                    <button onclick="deleteCategory(${category.id})" class="bg-red-600 text-white font-medium rounded-lg text-sm px-2 py-1 hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-red-300">Löschen</button>
                 </td>
             </tr>
-        `
-        tbody.insertAdjacentHTML('afterend', tr)
+        `;
+        tbody.insertAdjacentHTML('beforeend', tr); // Ändern zu 'beforeend' für korrektes Hinzufügen der Zeilen
     });
 }
 
+displayCategories();
 
-displayCategories()
-
-
+// Funktion zum Löschen einer Kategorie
 async function deleteCategory(id) {
-    const isConfirmed = confirm("Are you sure you want to delete?")
-    if (!isConfirmed) return
+    if (!confirm("Sind Sie sicher, dass Sie löschen möchten?")) return;
 
-    const res = await fetch(`http://localhost:3000/categories/${id}`, {
+    const response = await fetch(`http://localhost:3000/categories/${id}`, {
         method: 'DELETE',
-        headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-        },
-    })
+        headers: { Authorization: `Bearer ${token}` },
+    });
 
-    await res.json()
-    window.location.reload()
-} 
+    if(response.status === 403) {
+        alert("Sie sind nicht berechtigt!");
+        return;
+    }
 
+    window.location.reload(); // Lädt die Seite neu, um Änderungen anzuzeigen
+}
 
+// Funktion zum Abrufen aller Produkte
 async function getProducts() {
-  const res = await fetch('http://localhost:3000/products')
-  const data = await res.json()
-
-  return data
+    const response = await fetch('http://localhost:3000/products', {
+        headers: { Authorization: `Bearer ${token}` }
+    });
+    const data = await response.json();
+    return data;
 }
 
-
+// Funktion zum Anzeigen aller Produkte in der HTML-Tabelle
 async function displayProducts() {
-  const products = await getProducts()
-  const tbody = document.getElementById('product-list')
+    const products = await getProducts();
+    const tbody = document.getElementById('product-list');
 
-  
-  products.forEach(pro => {
-      const tr = `
-          <tr>
-              <td class="py-2 px-4 border">${pro.name}</td>
-              <td class="py-2 px-4 border">
-                  <a href="./create-product.html?id=${pro.id}" class="bg-yellow-500 text-white font-medium rounded-lg text-sm px-2 py-1 hover:bg-yellow-600 focus:outline-none focus:ring-4 focus:ring-yellow-300">Bearbeiten</a>
-                  <button onclick="deleteProduct(${pro.id})" class="bg-red-600 text-white font-medium rounded-lg text-sm px-2 py-1 hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-red-300">Löschen</button>
-              </td>
-          </tr>
-      `
-      tbody.insertAdjacentHTML('afterend', tr)
-  });
+    products.forEach(product => {
+        const tr = `
+            <tr>
+                <td class="py-2 px-4 border">${product.name}</td>
+                <td class="py-2 px-4 border">
+                    <a href="./create-product.html?id=${product.id}" class="bg-yellow-500 text-white font-medium rounded-lg text-sm px-2 py-1 hover:bg-yellow-600 focus:outline-none focus:ring-4 focus:ring-yellow-300">Bearbeiten</a>
+                    <button onclick="deleteProduct(${product.id})" class="bg-red-600 text-white font-medium rounded-lg text-sm px-2 py-1 hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-red-300">Löschen</button>
+                </td>
+            </tr>
+        `;
+        tbody.insertAdjacentHTML('beforeend', tr);
+    });
 }
 
-displayProducts()
+displayProducts();
 
+function logout() {
+    localStorage.removeItem("jwt");
+    window.location.href = "./login.html"
+}
+
+// Funktion zum Löschen eines Produkts
 async function deleteProduct(id) {
-    const isConfirmed = confirm("Are you sure you want to delete?")
-    if (!isConfirmed) return
+    if (!confirm("Sind Sie sicher, dass Sie löschen möchten?")) return;
 
-    const res = await fetch(`http://localhost:3000/products/${id}`, {
+    const response = await fetch(`http://localhost:3000/products/${id}`, {
         method: 'DELETE',
-        headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-        },
-    })
+        headers: { Authorization: `Bearer ${token}` },
+    });
 
-    await res.json()
-    window.location.reload()
+    if(response.status === 403) {
+        alert("Sie sind nicht berechtigt!");
+        return;
+    }
+
+    window.location.reload(); // Lädt die Seite neu, um Änderungen anzuzeigen
 }

@@ -1,5 +1,7 @@
+const searchParams = new URLSearchParams(window.location.search);
+const filter = searchParams.get('filter')
+
 // Führt Funktionen aus, sobald das DOM vollständig geladen ist
-document.addEventListener('DOMContentLoaded', function() {
     // Ruft Kategoriedaten vom Server ab
     fetch('http://localhost:3000/categories', {
         headers: {
@@ -12,12 +14,11 @@ document.addEventListener('DOMContentLoaded', function() {
         categoryList.innerHTML = ''; // Löscht vorhandene Kategorien, um Duplikate zu vermeiden
         categories.forEach(category => {
             const listItem = document.createElement('li'); // Erstellt ein neues Listenelement für jede Kategorie
-            listItem.innerHTML = `<a href="#${category.id}" class="block py-2 px-4 bg-gray-100 rounded hover:bg-gray-200">${category.name}</a>`;
+            listItem.innerHTML = `<a href="?filter=${category.id}" class="block py-2 px-4 bg-gray-100 rounded hover:bg-gray-200">${category.name}</a>`;
             categoryList.appendChild(listItem); // Fügt das Listenelement der Liste hinzu
         });
     })
     .catch(error => console.error('Fehler beim Laden der Kategorien:', error));
-});
 
 // Asynchrone Funktion zum Abrufen von Produktinformationen
 async function getProducts() {
@@ -31,7 +32,8 @@ async function displayProducts() {
     const products = await getProducts();
     const productsList = document.getElementById('product-list');
 
-    products.forEach(product => {
+
+    products.filter(product => filter === 'all' || filter == product.categoryId || !filter).forEach(product => {
         const card = `
             <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow ">
                 <a href="#">
@@ -52,3 +54,9 @@ async function displayProducts() {
 }
 
 displayProducts(); // Ruft die Funktion auf, um Produkte beim Laden der Seite anzuzeigen
+
+
+function logout() {
+    localStorage.removeItem("jwt");
+    window.location.href = "./login.html"
+}
