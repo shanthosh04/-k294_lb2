@@ -37,7 +37,7 @@ async function displayProducts() {
                     <img class="p-8 rounded-t-lg w-72" src="${product.image}" alt="${product.name}" />
                 </a>
                 <div class="px-5 pb-5">
-                    <a href="./show-product.html">
+                    <a href="./product.html?id=${product.id}">
                         <h5 class="text-xl font-semibold tracking-tight text-gray-900">${product.name}</h5>
                     </a>
                     <div class="flex items-center justify-between">
