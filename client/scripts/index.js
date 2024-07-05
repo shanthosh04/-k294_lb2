@@ -1,8 +1,7 @@
 const searchParams = new URLSearchParams(window.location.search);
 const filter = searchParams.get('filter')
 
-// Führt Funktionen aus, sobald das DOM vollständig geladen ist
-    // Ruft Kategoriedaten vom Server ab
+    //  Zeile 5 - 20 von Chat-gpt abgeschaut und gemacht
     fetch('http://localhost:3000/categories', {
         headers: {
             Authorization: `Bearer ${localStorage.getItem('jwt')}` // Verwendet JWT für die Authentifizierung
@@ -18,7 +17,6 @@ const filter = searchParams.get('filter')
             categoryList.appendChild(listItem); // Fügt das Listenelement der Liste hinzu
         });
     })
-    .catch(error => console.error('Fehler beim Laden der Kategorien:', error));
 
 // Asynchrone Funktion zum Abrufen von Produktinformationen
 async function getProducts() {
@@ -35,20 +33,20 @@ async function displayProducts() {
 
     products.filter(product => filter === 'all' || filter == product.categoryId || !filter).forEach(product => {
         const card = `
-            <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow ">
+        <div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 p-4">
+            <div class="bg-white border border-gray-200 rounded-lg shadow">
                 <a href="#">
-                    <img class="p-8 rounded-t-lg w-72" src="${product.image}" alt="${product.name}" />
+                    <img class="p-8 rounded-t-lg w-full" src="${product.image}" alt="${product.name}" />
                 </a>
                 <div class="px-5 pb-5">
                     <a href="./product.html?id=${product.id}">
                         <h5 class="text-xl font-semibold tracking-tight text-gray-900">${product.name}</h5>
                     </a>
-                    <div class="flex items-center justify-between">
-                        <span class="text-3xl font-bold text-gray-900">${product.price} CHF</span>                        
-                    </div>
+                    <span class="text-3xl font-bold text-gray-900">${product.price} CHF</span>
                 </div>
             </div>
-        `;
+        </div>
+    `;
         productsList.insertAdjacentHTML('afterend', card); // Fügt die Produktkarte ans Ende der Liste hinzu
     });
 }

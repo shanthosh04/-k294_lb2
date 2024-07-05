@@ -65,6 +65,38 @@ async function createOrUpdateProduct(product) {
     }
 }
 
+
+async function getProduct() {
+    if (id) {
+        try {
+            const res = await fetch(`http://localhost:3000/products/${id}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                }
+            });
+
+            if (!res.ok) {
+                const message = await res.text();
+                throw new Error(message);
+            }
+
+            const data = await res.json();
+
+            if (data.message) {
+                alert(data.message);
+                return null;
+            }
+
+            return data;
+        } catch (error) {
+            alert(`Error: ${error.message}`);
+            return null;
+        }
+    }
+    return null;
+}
+
+
 /**
  * Lädt Produktdetails und füllt die Formularfelder damit aus.
  */
