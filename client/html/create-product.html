@@ -1,20 +1,26 @@
 <!doctype html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="../scripts/create-product.js" defer></script>
-  <script src="../scripts/helpers.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- TailwindCSS über CDN eingebunden für modernes und responsives Design -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Verzögerte Einbindung von JavaScript-Dateien für die Produktverwaltung -->
+    <script src="../scripts/create-product.js" defer></script>
+    <script src="../scripts/helpers.js"></script>
 </head>
 <body class="bg-gray-50">
+    <!-- Sektion, die sich über die gesamte Bildschirmhöhe erstreckt -->
     <section class="min-h-screen flex flex-col justify-between">
+        <!-- Kopfzeile mit Navigation -->
         <nav class="bg-stone-500 text-white w-full py-4 shadow-lg">
             <div class="max-w-screen-xl mx-auto px-4 flex items-center justify-between">
-              <a href="login.html" class="flex items-center space-x-3">
-                <img src="../img/logo.png" alt="Logo" class="h-8 w-8 mr-2">
-                <span class="text-2xl font-semibold">Online Shop</span>
-              </a>
+                <!-- Logo und Navigation zurück zur Login-Seite -->
+                <a href="login.html" class="flex items-center space-x-3">
+                    <img src="../img/logo.png" alt="Logo" class="h-8 w-8 mr-2">
+                    <span class="text-2xl font-semibold">Online Shop</span>
+                </a>
+                <!-- Verborgenes Menü auf kleineren Bildschirmen, voll sichtbar auf grösseren Bildschirmen -->
                 <div class="hidden w-full md:block md:w-auto" id="navbar-default">
                     <ul class="flex flex-col md:flex-row md:space-x-8 text-white">
                         <li><a href="./index.html" class="block py-2 px-3 hover:bg-blue-800 rounded md:hover:bg-transparent">Produkte</a></li>
@@ -25,10 +31,13 @@
                 </div>
             </div>
         </nav>
-
+        
+        <!-- von Flowbite  -->
+        <!-- Hauptteil der Seite für die Produkterstellung -->
         <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto w-full flex-grow">
             <div class="w-full max-w-md bg-white rounded-lg shadow-lg p-6">
                 <h1 class="text-2xl font-bold text-gray-900 mb-6">Produkt Hinzufügen</h1>
+                <!-- Formular zur Eingabe von Produktinformationen mit Validierung der Eingaben -->
                 <form class="space-y-6" id="product-form" enctype="multipart/form-data">
                     <div>
                         <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Produkt Titel</label>
@@ -49,7 +58,7 @@
 
                     <div>
                         <label for="image" class="block text-sm font-medium text-gray-700 mb-1">Produkt Bild</label>
-                        <input type="url" name="image" id="image" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg w-full p-2.5 focus:ring-stone-500 focus:border-stone-500" accept="image/*" required>
+                        <input type of="url" name="image" id="image" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg w-full p-2.5 focus:ring-stone-500 focus:border-stone-500" accept="image/*" required>
                     </div>
                     
                     <button type="submit" class="w-full bg-blue-600 text-white font-medium rounded-lg text-sm px-5 py-2.5 hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300">Senden</button>
@@ -57,9 +66,10 @@
             </div>
         </div>
 
+        <!-- Fusszeile mit Urheberrechtsinformation -->
         <footer class="bg-stone-500 text-white py-4">
             <div class="max-w-screen-xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
-                <span class="text-sm">Copyright &copy; 2024 | Shanthosh Sivasentinathan</span>>
+                <span class="text-sm">Urheberrecht &copy; 2024 | Shanthosh Sivasentinathan</span>
             </div>
         </footer>
     </section>

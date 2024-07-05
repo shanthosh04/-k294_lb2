@@ -3,32 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Einbindung von TailwindCSS für responsives und modernes Design -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Einbindung von Hilfsfunktionen und spezifischen Skripten für Produktverwaltung -->
   <script src="../scripts/helpers.js"></script>
   <script src="../scripts/manage-product.js"></script>
 </head>
 <body class="bg-gray-50">
+    <!-- Hauptsektion, die sich über die volle Bildschirmhöhe erstreckt -->
     <section class="min-h-screen flex flex-col justify-between">
+        <!-- Navigationsleiste mit Verlinkungen und Funktionen für den Benutzer -->
         <nav class="bg-stone-500 text-white w-full py-4 shadow-lg">
             <div class="max-w-screen-xl mx-auto px-4 flex items-center justify-between">
+              <!-- Logo und Link zurück zur Login-Seite -->
               <a href="login.html" class="flex items-center space-x-3">
                 <img src="../img/logo.png" alt="Logo" class="h-8 w-8 mr-2">
                 <span class="text-2xl font-semibold">Online Shop</span>
               </a>
-                <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-                    <ul class="flex flex-col md:flex-row md:space-x-8 text-white">
-                        <li><a href="./index.html" class="block py-2 px-3 hover:bg-blue-800 rounded md:hover:bg-transparent">Produkte</a></li>
-                        <li><a href="./forgot-password.html" class="block py-2 px-3 hover:bg-blue-800 rounded md:hover:bg-transparent">Passwörter ändern</a></li>
-                        <li><button onclick="logout()" class="block py-2 px-3 hover:bg-blue-800 rounded md:hover:bg-transparent">Ausloggen</button></li>
-                </div>
+              <!-- Navigationsmenü, verborgen in kleinen Bildschirmen -->
+              <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+                <ul class="flex flex-col md:flex-row md:space-x-8 text-white">
+                    <li><a href="./index.html" class="block py-2 px-3 hover:bg-blue-800 rounded md:hover:bg-transparent">Produkte</a></li>
+                    <li><a href="./forgot-password.html" class="block py-2 px-3 hover:bg-blue-800 rounded md:hover:bg-transparent">Passwörter ändern</a></li>
+                    <li><button onclick="logout()" class="block py-2 px-3 hover:bg-blue-800 rounded md:hover:bg-transparent">Ausloggen</button></li>
+              </div>
             </div>
         </nav>
 
+        <!-- Zentrum der Seite für die Verwaltung von Produkten und Kategorien -->
         <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto w-full flex-grow">
             <div class="w-full max-w-4xl bg-white rounded-lg shadow-lg p-6 space-y-12">
+                <!-- Sektion für Produktverwaltung -->
                 <div class="space-y-6">
                     <h1 class="text-2xl font-bold text-gray-900 mb-6">Produkte Verwalten</h1>
                     <a href="./create-product.html" class="bg-blue-500 text-white px-3 py-2 rounded hover:bg-blue-700 focus:outline-none">Produkt hinzufügen</a>
+                    <!-- Tabelle für die Anzeige und Aktionen von Produkten -->
                     <table class="min-w-full bg-white border">
                         <thead class="bg-gray-100">
                             <tr>
@@ -36,14 +45,17 @@
                                 <th class="py-2 px-4 border">Aktionen</th>
                             </tr>
                         </thead>
-                        <tbody id="product-list" >
+                        <tbody id="product-list">
+                            <!-- Produkte werden hier dynamisch eingefügt -->
                         </tbody>
                     </table>
                 </div>
 
+                <!-- Sektion für Kategorienverwaltung -->
                 <div class="space-y-6">
                     <h1 class="text-2xl font-bold text-gray-900 mb-6">Kategorien Verwalten</h1>
                     <a href="./create-categorie.html" class="bg-blue-500 text-white px-3 py-2 rounded hover:bg-blue-700 focus:outline-none">Kategorie hinzufügen</a>
+                    <!-- Tabelle für die Anzeige und Aktionen von Kategorien -->
                     <table class="min-w-full bg-white border">
                         <thead class="bg-gray-100">
                             <tr>
@@ -52,13 +64,14 @@
                             </tr>
                         </thead>
                         <tbody id="category-list">
-
+                            <!-- Kategorien werden hier dynamisch eingefügt -->
                         </tbody>
                     </table>                    
                 </div>
             </div>
         </div>
 
+        <!-- Fusszeile mit Urheberrechtsinformationen -->
         <footer class="bg-stone-500 text-white py-4">
             <div class="max-w-screen-xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
                 <span class="text-sm">Copyright &copy; 2024 | Shanthosh Sivasentinathan</span>
