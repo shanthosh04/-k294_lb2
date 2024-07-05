@@ -1,35 +1,35 @@
 // Die Code Kommentare wurde selber geschrieben, aber dafür mit hilfe Chatgpt abgeändert und profisionneler geschrieben
-const searchParams = new URLSearchParams(window.location.search);
-const filter = searchParams.get('filter')
+const searchParams = new URLSearchParams(window.location.search); // Extrahiert die URL-Parameter
+const filter = searchParams.get('filter'); // Ruft den Wert des Filters ab
 
-    //  Zeile 5 - 19 von Chat-gpt abgeschaut und gemacht https://chatgpt.com/
-    fetch('http://localhost:3000/categories', {
-        headers: {
-            Authorization: `Bearer ${localStorage.getItem('jwt')}` // Verwendet JWT für die Authentifizierung
-        }
-    })
-    .then(response => response.json())
-    .then(categories => {
-        const categoryList = document.getElementById('category-list');
-        categoryList.innerHTML = ''; // Löscht vorhandene Kategorien, um Duplikate zu vermeiden
-        categories.forEach(category => {
-            const listItem = document.createElement('li'); // Erstellt ein neues Listenelement für jede Kategorie
-            listItem.innerHTML = `<a href="?filter=${category.id}" class="block py-2 px-4 bg-gray-100 rounded hover:bg-gray-200">${category.name}</a>`;
-            categoryList.appendChild(listItem); // Fügt das Listenelement der Liste hinzu
-        });
-    })
+//  Zeile 5 - 19 von Chat-gpt abgeschaut und gemacht https://chatgpt.com/
+fetch('http://localhost:3000/categories', {
+    headers: {
+        Authorization: `Bearer ${localStorage.getItem('jwt')}` // Verwendet JWT für die Authentifizierung
+    }
+})
+.then(response => response.json()) // Konvertiert die Antwort in JSON
+.then(categories => {
+    const categoryList = document.getElementById('category-list'); // Referenz zur Kategorieliste
+    categoryList.innerHTML = ''; // Löscht vorhandene Kategorien, um Duplikate zu vermeiden
+    categories.forEach(category => {
+        const listItem = document.createElement('li'); // Erstellt ein neues Listenelement für jede Kategorie
+        listItem.innerHTML = `<a href="?filter=${category.id}" class="block py-2 px-4 bg-gray-100 rounded hover:bg-gray-200">${category.name}</a>`; // Setzt den HTML-Inhalt des Listenelements
+        categoryList.appendChild(listItem); // Fügt das Listenelement der Liste hinzu
+    });
+})
 
 // Asynchrone Funktion zum Abrufen von Produktinformationen
 async function getProducts() {
-    const res = await fetch('http://localhost:3000/products');
-    const data = await res.json();
-    return data;
+    const res = await fetch('http://localhost:3000/products'); // Sendet eine GET-Anfrage an den Server
+    const data = await res.json(); // Konvertiert die Antwort in JSON
+    return data; // Gibt die Produktdaten zurück
 }
   
 // Funktion zur Anzeige von Produkten auf der Seite
 async function displayProducts() {
-    const products = await getProducts();
-    const productsList = document.getElementById('product-list');
+    const products = await getProducts(); // Ruft die Produktdaten ab
+    const productsList = document.getElementById('product-list'); // Referenz zur Produktliste
 
     // Zeile 34 - 52 Chat gpt https://chatgpt.com/ 
     products.filter(product => filter === 'all' || filter == product.categoryId || !filter).forEach(product => {
@@ -47,15 +47,18 @@ async function displayProducts() {
                 </div>
             </div>
         </div>
-    `;
+    `; // HTML-Vorlage für das Produkt
         productsList.insertAdjacentHTML('afterend', card); // Fügt die Produktkarte ans Ende der Liste hinzu
     });
 }
 
-displayProducts(); // Ruft die Funktion auf, um Produkte beim Laden der Seite anzuzeigen
+// Ruft die Funktion auf, um Produkte beim Laden der Seite anzuzeigen
+displayProducts();
 
-
+/**
+ * Entfernt das JWT-Token aus dem lokalen Speicher und leitet den Nutzer zur Login-Seite.
+ */
 function logout() {
-    localStorage.removeItem("jwt");
-    window.location.href = "./login.html"
+    localStorage.removeItem("jwt"); // Entfernt das JWT-Token aus dem lokalen Speicher
+    window.location.href = "./login.html" // Leitet zur Login-Seite weiter
 }
