@@ -17,6 +17,11 @@
    ```
    node app.js
    ```
+4. Den Frontend starten:
+   ```
+   unten rechts befindet sich Go Live button. Auf den Button drücken. Wenn es nicht Sonst beim Extensions den GO Live herunterladen
+   ```
+![alt text](image.png)
 
 Die API wird dann unter [http://localhost:3000/](http://localhost:3000/) verfügbar sein und die Swagger-Dokumentation wird unter [http://localhost:3000/api-docs](http://localhost:3000/api-docs) zugänglich sein.
 
