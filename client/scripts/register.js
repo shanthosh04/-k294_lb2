@@ -1,3 +1,4 @@
+// Die Code Kommentare wurde selber geschrieben, aber dafür mit hilfe Chatgpt abgeändert und profisionneler geschrieben
 // Initialisierung des Registrierungsformulars und Event-Listener hinzufügen
 const registerForm = document.getElementById('register-form');
 

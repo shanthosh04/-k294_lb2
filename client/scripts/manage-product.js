@@ -1,3 +1,4 @@
+// Die Code Kommentare wurde selber geschrieben, aber dafür mit hilfe Chatgpt abgeändert und profisionneler geschrieben
 const token = localStorage.getItem('jwt');
 
 // Asynchrone Funktion zum Abrufen aller Kategorien von der API
@@ -10,6 +11,7 @@ async function getCategories() {
 }
 
 // Funktion zum Anzeigen aller Kategorien in der HTML-Tabelle
+// Zeile 14 - 30 https://chatgpt.com/
 async function displayCategories() {
     const categories = await getCategories();
     const tbody = document.getElementById('category-list');
@@ -57,6 +59,7 @@ async function getProducts() {
 }
 
 // Funktion zum Anzeigen aller Produkte in der HTML-Tabelle
+// Zeile 62 - 78 https://chatgpt.com/
 async function displayProducts() {
     const products = await getProducts();
     const tbody = document.getElementById('product-list');

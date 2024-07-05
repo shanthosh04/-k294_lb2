@@ -1,7 +1,8 @@
+// Die Code Kommentare wurde selber geschrieben, aber dafür mit hilfe Chatgpt abgeändert und profisionneler geschrieben
 const searchParams = new URLSearchParams(window.location.search);
 const filter = searchParams.get('filter')
 
-    //  Zeile 5 - 20 von Chat-gpt abgeschaut und gemacht
+    //  Zeile 5 - 19 von Chat-gpt abgeschaut und gemacht https://chatgpt.com/
     fetch('http://localhost:3000/categories', {
         headers: {
             Authorization: `Bearer ${localStorage.getItem('jwt')}` // Verwendet JWT für die Authentifizierung
@@ -30,7 +31,7 @@ async function displayProducts() {
     const products = await getProducts();
     const productsList = document.getElementById('product-list');
 
-
+    // Zeile 34 - 52 Chat gpt https://chatgpt.com/ 
     products.filter(product => filter === 'all' || filter == product.categoryId || !filter).forEach(product => {
         const card = `
         <div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 p-4">

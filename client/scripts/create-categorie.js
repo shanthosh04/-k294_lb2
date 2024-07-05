@@ -1,3 +1,4 @@
+// Die Code Kommentare wurde selber geschrieben, aber dafür mit hilfe Chatgpt abgeändert und profisionneler geschrieben
 // DOM-Element für das Kategorie-Formular und JWT-Token aus dem lokalen Speicher abrufen
 const createCategorie = document.getElementById('create-categorie');
 const token = localStorage.getItem("jwt");

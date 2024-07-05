@@ -1,3 +1,4 @@
+// Die Code Kommentare wurde selber geschrieben, aber dafür mit hilfe Chatgpt abgeändert und profisionneler geschrieben
 // Token aus dem lokalen Speicher holen, der für die Authentifizierung bei der API verwendet wird
 const token = localStorage.getItem('jwt');
 const form = document.getElementById('reset-password');

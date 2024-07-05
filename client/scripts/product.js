@@ -1,3 +1,4 @@
+// Die Code Kommentare wurde selber geschrieben, aber dafür mit hilfe Chatgpt abgeändert und profisionneler geschrieben
 // DOM-Elemente für die Produktanzeige initialisieren
 const image = document.getElementById('image');
 const title = document.getElementById('title');

@@ -1,3 +1,4 @@
+// Die Code Kommentare wurde selber geschrieben, aber dafür mit hilfe Chatgpt abgeändert und profisionneler geschrieben
 // DOM-Elemente für das Produktformular und Kategorie-Auswahlmenü initialisieren
 const productForm = document.getElementById('product-form');
 const categorySelect = document.getElementById('categoryId');
@@ -33,8 +34,8 @@ productForm.addEventListener('submit', async function(event) {
 
 /**
  * Erstellt oder aktualisiert ein Produkt auf dem Server.
- * @param {Object} product - Die Produktinformationen.
- */
+ * 
+*/
 async function createOrUpdateProduct(product) {
     const url = id ? `http://localhost:3000/products/${id}` : `http://localhost:3000/products`;
     const method = id ? 'PUT' : 'POST';

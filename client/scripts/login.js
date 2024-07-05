@@ -1,4 +1,5 @@
 // Initialisierung des Login-Formulars und Event-Listener hinzufügen
+// Die Code Kommentare wurde selber geschrieben, aber dafür mit hilfe Chatgpt abgeändert und profisionneler geschrieben
 const loginForm = document.getElementById('login-form');
 
 loginForm.addEventListener('submit', async event => {
